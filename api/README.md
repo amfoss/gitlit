@@ -12,7 +12,7 @@ It offers a much easier and comfortable way to understand, write and send querie
 It is recommended to use the [GitHub v4 Explorer](https://developer.github.com/v4/explorer/) to construct and send queries.
 
  
-#### 1 - to extract the topic names assigned for a given input repository 
+1. to extract the topic names assigned for a given input repository 
 ```
 query
 {
