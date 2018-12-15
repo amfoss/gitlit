@@ -44,7 +44,7 @@ class UserMetrics:
 
         #calculate final score
         #self.calcUserScore()
-        
+
     def fetchBasicDetails(self):
         query = """
         {
