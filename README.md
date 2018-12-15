@@ -1,1 +1,1 @@
-# gitlit
+# GitLit
