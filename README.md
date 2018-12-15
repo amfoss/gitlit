@@ -6,7 +6,7 @@ Furthermore, even for the contributors, discovering interesting and contributabl
 
 GitLit is a web app that rates repositories and contributors through a logical algorithm which takes into consideration not only a few standard metrics like Stars, Forks, and PRs, but also accounting for factors like Activity in the Community (eg: Issue Resolution, Feature Addition),  backgrounds of the contributors etc.
 
-# Target Customers
+## Target Customers
 GitLit has two primary use-cases, one for the developers to discover interesting projects and the other is for 
 people in the industry to find talented and enthusiatic developers. 
 
@@ -30,11 +30,11 @@ their projects, and monitor community members.
  * **Corporate Recruiters:** Corporate companies can discover developers, with the required talent and passion using
  credible metrics of GitLit 
 
-# How it Works?
+## How it Works?
 
 ## Algorithms
 
-# Tech Stack
+## Tech Stack
 
 * **Language:** Python 3.6
 * **Framework (full-stack):** Django
@@ -43,11 +43,11 @@ their projects, and monitor community members.
 * **Javascript Libraries:** jQuery
 * **Stylesheet Pre-processors:** Sass 
 
-# Contributors
+## Contributors
 
 1. Venu Vardhan Reddy
 2. Akhil K, Gangadharan
 3. Ashwin S Shenoy
 
-# License
+## License
 
