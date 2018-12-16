@@ -6,6 +6,22 @@
 
 # importing libraries
 import requests
+import collections
+from datetime import datetime
+from dateutil import parser, relativedelta
+import os
+
+import csv
+
+module_dir = os.path.dirname(__file__)  # get current directory
+
+def runquery(token, query):
+    header = {"Authorization": "bearer " + token}
+    request = requests.post('https://api.github.com/graphql', json={'query': query}, headers=header)
+    if request.status_code == 200:
+        return request.json()
+    else:
+        return 0
 
 
 class UserMetrics:
@@ -33,17 +49,18 @@ class UserMetrics:
         self.contributionPoints = 0
         self.activityPoints = 0
         self.communityPoints = 0
+        self.userPoints = 0
 
         #run class functions
         self.fetchBasicDetails()
-        #self.calcBaseScore()
-        #self.calcCreationScore()
-        #self.calcContributionScore()
-        #self.calcActivityScore()
-        #self.calcCommunityScore()
+        self.calcCreationScore()
+        self.calcContributionScore()
+        self.calcActivityScore()
 
         #calculate final score
-        #self.calcUserScore()
+        self.calcUserScore()
+        self.getTopicList()
+        self.setSkillPoints()
 
     def fetchBasicDetails(self):
         query = """
@@ -92,32 +109,371 @@ class UserMetrics:
 
         }
         """
-        header = {"Authorization": "bearer " + self.token}
-        request = requests.post('https://api.github.com/graphql', json={'query': query}, headers=header)
-        if request.status_code == 200:
-            result = request.json()
-            self.fullName =  result["data"]["user"]["name"]
-            self.userID =  result["data"]["user"]["databaseId"]
+        response = runquery(self.token,query)
+        if response:
+            self.fullName = response["data"]["user"]["name"]
+            self.userID = response["data"]["user"]["databaseId"]
 
-            self.followersCount = result["data"]["user"]["followers"]["totalCount"]
-            self.followingCount = result["data"]["user"]["following"]["totalCount"]
-            self.prCount = result["data"]["user"]["pullRequests"]["totalCount"]
-            self.issueCount = result["data"]["user"]["issues"]["totalCount"]
-            self.repoOwnCount = result["data"]["user"]["repositories"]["totalCount"]
-            self.repoContributionCount = result["data"]["user"]["repositoriesContributedTo"]["totalCount"]
+            self.followersCount = response["data"]["user"]["followers"]["totalCount"]
+            self.followingCount = response["data"]["user"]["following"]["totalCount"]
+            self.prCount = response["data"]["user"]["pullRequests"]["totalCount"]
+            self.issueCount = response["data"]["user"]["issues"]["totalCount"]
+            self.organizationCount = response["data"]["user"]["organizations"]["totalCount"]
+            self.repoOwnCount = response["data"]["user"]["repositories"]["totalCount"]
+            self.repoContributionCount = response["data"]["user"]["repositoriesContributedTo"]["totalCount"]
+
+            self.yCommitsCount = response["data"]["user"]["contributionsCollection"]["totalCommitContributions"]
+            self.yPRCount = response["data"]["user"]["contributionsCollection"]["totalPullRequestContributions"]
+            self.yReposCount = response["data"]["user"]["contributionsCollection"]["totalRepositoryContributions"]
+            self.yIssueCount = response ["data"]["user"]["contributionsCollection"]["totalIssueContributions"]
+            self.yReviewCount = response["data"]["user"]["contributionsCollection"]["totalPullRequestReviewContributions"]
+
+            self.basePoints = round(0.3 * self.yCommitsCount + 0.3 * self.yPRCount + 0.3 * self.yReposCount + 0.2 * self.yIssueCount + 0.2 * self.yReviewCount, 2)
+            self.communityPoints = round(self.organizationCount + 0.2 * self.followersCount + 0.1 * self.followingCount, 2)
+
+    def calcCreationScore(self):
+        query = """
+        {
+            user(login:""" + '"' + self.username + '"' + """)
+            {
+              repositories(isFork:false,last:100)
+              {
+                edges
+                {
+                  node
+                  {
+                    stargazers
+                    {
+                      totalCount
+                    }
+                  }
+                }
+              }
+            }
+        }       
+        """
+        response = runquery(self.token,query)
+        if response:
+            repoStarsCount = 0
+            if response["data"]["user"]["repositories"]["edges"]:
+                for repo in response["data"]["user"]["repositories"]["edges"]:
+                    repoStarsCount = repoStarsCount + repo["node"]["stargazers"]["totalCount"]
+                if repoStarsCount>0:
+                    self.creationPoints =  (2 * repoStarsCount/self.repoOwnCount) * self.repoOwnCount
+                else:
+                    self.creationPoints = 0.5 * self.repoOwnCount
+            else:
+                self.creationPoints = self.repoOwnCount
+
+    def calcActivityScore(self):
+        pr_query = """
+        {
+          user(login:""" + '"' + self.username + '"' + """)
+          {
+              pullRequests(last:100,states:MERGED)
+              {
+                edges{
+                  node
+                  {
+                    createdAt
+                  }
+                }
+              }
+
+          }
+        }
+        """
+        response = runquery(self.token, pr_query)
+        if response:
+            count = 0
+            if (response["data"]["user"]["pullRequests"]["edges"]):
+                for pr in response["data"]["user"]["pullRequests"]["edges"]:
+                    created = parser.parse(pr["node"]["createdAt"])
+                    timezone = created.tzinfo
+                    time_now = datetime.now(timezone)
+                    yearago = time_now - relativedelta.relativedelta(year=1)
+
+                    if (created > yearago):
+                        count = count + 1
+
+            annualPRmergedCount = count
+
+        issue_query = """
+              {
+                user(login:""" + '"' + self.username + '"' + """)
+                {
+                    issues(last:100,states:CLOSED)
+                    {
+                      edges{
+                        node
+                        {
+                          createdAt
+                        }
+                      }
+                    }
+
+                }
+              }
+              """
+        response = runquery(self.token, issue_query)
+        if response:
+            count = 0
+            if (response["data"]["user"]["issues"]["edges"]):
+                for pr in response["data"]["user"]["issues"]["edges"]:
+                    created = parser.parse(pr["node"]["createdAt"])
+                    timezone = created.tzinfo
+                    time_now = datetime.now(timezone)
+                    yearago = time_now - relativedelta.relativedelta(year=1)
+
+                    if (created > yearago):
+                        count = count + 1
+
+            annualIssuesRaised = count
+
+        self.activityPoints = 3 * annualPRmergedCount + 2 * annualIssuesRaised
+
+    def calcContributionScore(self):
+        query = """
+        {
+           user(login:""" + '"' + self.username + '"' + """)
+          {
+            pullRequests(states:MERGED)
+            {
+                totalCount
+            }
+            issues(states:CLOSED)
+            {
+                totalCount
+            }
+          }
+        }
+        """
+        response = runquery(self.token, query)
+        if response:
+            self.PRmergedCount = response["data"]["user"]["pullRequests"]["totalCount"]
+            self.IssuesMergedCount = response["data"]["user"]["pullRequests"]["totalCount"]
+
+        if self.prCount > 0:
+            PRscore = ((self.PRmergedCount) ** 2) / self.prCount
+        else:
+            PRscore = 0
+
+        if self.issueCount > 0:
+            IssueScore = ((self.IssuesMergedCount) ** 2) / self.issueCount
+        else:
+            IssueScore = 0
+
+        self.contributionPoints = round(0.3 * PRscore + 0.2 * IssueScore,2)
+
+    def calcUserScore(self):
+        self.userPoints = round(0.5 * self.basePoints + 2 * self.creationPoints + self.activityPoints + 2 * self.contributionPoints,2)
+
+    def getTopicList(self):
+        selfTopicList = list()  # topics of the user repos
+        contributedTopicList = list()  # topics of the user contributed repos
+        starredTopicList = list()  # topics which the user has starred
+
+        topicOccurenceSelf = dict()
+        topicOccurenceContributed = dict()
+        topicOccurenceStarred = dict()
+
+        self.topicInterestDict = dict()  # final dict!!
+
+        topic_query = """
+        {
+            user(login:""" + '"' + self.username + '"' + """)
+           {
+            starredRepositories(last: 100) {
+                  nodes {
+                    repositoryTopics(first: 100) {
+                      nodes {
+                        topic {
+                          name
+                        }
+                      }
+                    }
+                  }
+                }
+                repositories(last: 100) {
+                  nodes {
+                    languages(first: 3)
+                    {
+                      nodes
+                      {
+                        name
+                      }
+                    }
+                    repositoryTopics(first: 100) {
+                      nodes {
+                        topic {
+                          name
+                        }
+                      }
+                    }
+                  }
+                }
+                repositoriesContributedTo(last: 100) {
+                  nodes {
+                    languages(first: 3)
+                    {
+                        nodes
+                        {
+                            name
+                        }
+                    }
+                    repositoryTopics(first: 100) {
+                      nodes {
+                        topic {
+                          name
+                        }
+                      }
+                    }
+                  }
+                }
+             }
+        }
+        """
+
+        result = runquery(self.token, topic_query)
+        if result:
+            for i in result["data"]["user"]["starredRepositories"]["nodes"]:
+                for j in i["repositoryTopics"]["nodes"]:
+                    starredTopicList.append(j["topic"]["name"])
+
+            for i in result["data"]["user"]["repositories"]["nodes"]:
+                for j in i["repositoryTopics"]["nodes"]:
+                    selfTopicList.append(j["topic"]["name"])
+
+            for i in result["data"]["user"]["repositoriesContributedTo"]["nodes"]:
+                for j in i["repositoryTopics"]["nodes"]:
+                    contributedTopicList.append(j["topic"]["name"])
 
 
-username = str(input("Enter Username: "))
-token = str(input("Enter Token: "))
+        fileTopicList = open(os.path.join(module_dir, 'topics.txt'), "r").read().split('\n')
 
-user = UserMetrics(username, token)
+        topicOccurenceSelf = dict(collections.Counter(x for x in selfTopicList if x))
+        topicOccurenceContributed = dict(collections.Counter(x for x in contributedTopicList if x))
+        topicOccurenceStarred = dict(collections.Counter(x for x in starredTopicList if x))
 
-print("PROFILE ANALYSIS")
-print("Username: " + str(user.username))
-print("Full Name: " + str(user.fullName))
-print("\n \nSTATISTICS")
-print("Full Name: " + str(user.followersCount))
-print("PR Count: " + str(user.prCount))
-print("Issue Count:" + str(user.issueCount))
-print("Repos Owned Count:" + str(user.repoOwnCount))
-print("Repos Contributed Count:" + str(user.repoContributionCount))
+        self.topicSkill = topicOccurenceSelf  # we are using this to calculate skill points down there
+
+        # topicOccurenceSelf 4
+        # topicOccurenceContributed 3
+        # topicOccurenceStarred 1
+
+        def removeIrrelevant(topicDict):
+            to_delete = set(topicDict.keys()).difference(fileTopicList)  # removing A-B from A
+            for d in to_delete:
+                del topicDict[d]
+
+        removeIrrelevant(topicOccurenceSelf)
+        removeIrrelevant(topicOccurenceContributed)
+        removeIrrelevant(topicOccurenceStarred)
+
+        def updateValue(topicDict):
+            for topic in topicDict.keys():
+                if topic not in self.topicInterestDict.keys():
+                    value = 0
+                    if topic in topicOccurenceSelf.keys():
+                        value = value + 4 * topicOccurenceSelf[topic]
+                    if topic in topicOccurenceContributed.keys():
+                        value = value + 3 * topicOccurenceContributed[topic]
+                    if topic in topicOccurenceStarred.keys():
+                        value = value + 1 * topicOccurenceStarred[topic]
+                    self.topicInterestDict[topic] = value
+
+        updateValue(topicOccurenceSelf)
+        updateValue(topicOccurenceContributed)
+        updateValue(topicOccurenceStarred)
+
+        self.topicInterestDict = dict(sorted(self.topicInterestDict.items(), key=lambda x: x[1], reverse=True))
+
+    def setSkillPoints(self):
+        self.topicSkillDict = dict()
+
+        prm_query = """
+        {
+            user(login:""" + '"' + self.username + '"' + """)
+            {
+              pullRequests(last: 100, states: MERGED) {
+                  nodes {
+                    repository {
+                      repositoryTopics(first: 100) {
+                        nodes {
+                          topic {		
+                            name
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+                issues(last: 100, states: CLOSED) {
+                  nodes {
+                    repository {
+                      repositoryTopics(first: 100) {
+                        nodes {
+                          topic {		
+                            name
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+             }
+        }
+        """
+
+        PRtopicList = list()
+        PRtopicDict = dict()
+
+        issueTopicList = list()
+        issueTopicDict = dict()
+
+        result = runquery(self.token, prm_query)
+        if result:
+
+            for i in result["data"]["user"]["pullRequests"]["nodes"]:
+                for j in i["repository"]["repositoryTopics"]["nodes"]:
+                    PRtopicList.append(j["topic"]["name"])
+
+            for i in result["data"]["user"]["issues"]["nodes"]:
+                for j in i["repository"]["repositoryTopics"]["nodes"]:
+                    issueTopicList.append(j["topic"]["name"])
+
+            PRtopicDict = dict(collections.Counter(x for x in PRtopicList if x))
+            issueTopicDict = dict(collections.Counter(x for x in issueTopicList if x))
+
+        def updateSkillsetValue(topicDict):
+            for topic in topicDict.keys():
+                if topic not in self.topicSkillDict.keys() and topic in self.topicInterestDict.keys():
+                    value = 0
+                    if topic in PRtopicDict.keys():
+                        value = value + PRtopicDict[topic]
+                    if topic in issueTopicDict.keys():
+                        value = value + issueTopicDict[topic]
+                    if topic in self.topicSkill.keys():
+                        value = value + 0.5 * self.topicSkill[topic]
+                    self.topicSkillDict[topic] = value
+
+        updateSkillsetValue(PRtopicDict)
+        updateSkillsetValue(issueTopicDict)
+        updateSkillsetValue(self.topicSkill)
+        self.topicSkill = dict(sorted(self.topicSkill.items(), key=lambda x: x[1], reverse=True))
+
+
+username = input("Enter the username: ")
+user = UserMetrics(username, "03e5d817f468829fd9b3307f55de055461460c1a")
+
+print()
+print("The Base Score is " + str(user.basePoints))
+print("The Creation Points is " + str(user.creationPoints))
+print("The Activity Points is " + str(user.activityPoints))
+print("The Contribution Points is " + str(user.contributionPoints))
+print()
+print("The Topic Interests are \n" + str(user.topicInterestDict))
+print()
+print("The Topic Skill are \n" + str(user.topicSkillDict))
+print()
+print("The User Points is " + str(user.userPoints))
