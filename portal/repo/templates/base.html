@@ -1,0 +1,25 @@
+{% load static %}
+{% load sass_tags %}
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>{% block title %}{% endblock %} | GitLit</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    <link href="{% sass_src 'repo/sass/theme.sass' %}" rel="stylesheet">
+
+</head>
+<body>
+  {% include './sidebar.html' %}
+  {% include './topbar.html' %}
+
+  <div id="page">
+  {% block content %}
+  {% endblock %}
+  </div>
+  {% include './bottombar.html' %}
+
+</body>
+</html>

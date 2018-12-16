@@ -1,0 +1,21 @@
+{% load staticfiles %}
+<nav id="sidebar" class="d-none d-md-block">
+    <div class="logo">
+        <img src="{% static 'gitlit_logo.png' %}">
+    </div>
+
+    </div>
+    <div class="login">
+        {% if not request.user.is_authenticated %}
+            <a href="{% url 'social:begin' 'github' %}?next={{ request.get_full_path }}">
+                <i class="fa fa-github" ></i>
+                GitHub Login
+            </a>
+        {% else %}
+            <a href="{% url 'logout' %}?next={{ request.get_full_path }}">
+                <i class="fa fa-sign-out" ></i>
+                Logout
+            </a>
+        {% endif %}
+    </div>
+</nav>

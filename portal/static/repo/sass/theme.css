@@ -1,0 +1,227 @@
+@import url(bootstrap.min.css);
+@import "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+@import "https://fonts.googleapis.com/css?family=Rajdhani:700|Share+Tech+Mono";
+body {
+  font-family: "Share Tech Mono", monospace;
+  font-size: 1rem;
+  background: #eee; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Rajdhani", sans-serif; }
+
+@media (min-width: 768px) {
+  #page {
+    margin-left: 5rem; } }
+
+#page {
+  min-height: 100vh; }
+
+h6 {
+  margin: 0;
+  color: #777;
+  font-weight: 600;
+  display: flex;
+  align-items: center; }
+  h6 img {
+    height: 1.5rem;
+    margin-right: 0.5rem; }
+
+#topbar {
+  background: white;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  z-index: 10;
+  top: 0;
+  box-shadow: 0 0 1px #444; }
+  #topbar div {
+    padding: 0.5rem; }
+    #topbar div img {
+      height: 3rem; }
+    #topbar div form {
+      display: flex; }
+      #topbar div form input {
+        border-radius: 1rem 0 0 1rem;
+        border: 1px solid #666;
+        background: #eee;
+        padding: 0.2rem 1rem; }
+      #topbar div form button {
+        background: #1034A6;
+        color: white;
+        border: none;
+        box-shadow: 1px 1px 1px;
+        border-radius: 0 1rem 1rem 0;
+        padding: 0.5rem 1rem; }
+  #topbar .login-button {
+    border: 1px solid #1034A6;
+    border-radius: 0.5rem;
+    padding: 0.8rem 1rem;
+    text-align: center;
+    color: #1034A6; }
+  #topbar .login-button:hover {
+    text-decoration: none;
+    color: white;
+    background: #1034A6; }
+
+#bottombar {
+  background: white;
+  height: 3.5rem;
+  align-items: center;
+  position: sticky;
+  bottom: 0;
+  box-shadow: 0px 1px 4px #555; }
+
+#sidebar {
+  width: 5rem;
+  background-color: #1034A6;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  box-shadow: 0 0.5px 3px black; }
+  #sidebar .logo img {
+    width: 100%;
+    background: white;
+    padding: 1.5rem 0.5rem; }
+  #sidebar .login {
+    text-align: center;
+    padding: 1rem 0.2rem;
+    position: absolute;
+    bottom: 0;
+    width: 100%; }
+    #sidebar .login a {
+      line-height: 0.8;
+      display: block;
+      color: white; }
+      #sidebar .login a i {
+        font-size: 2rem;
+        padding-bottom: 0.5rem; }
+    #sidebar .login a:hover {
+      text-decoration: none; }
+  #sidebar .login:hover {
+    background-color: white; }
+    #sidebar .login:hover a {
+      color: #1034A6; }
+
+#profile {
+  padding: 1rem; }
+  #profile #header {
+    background: white;
+    padding: 1.5rem;
+    box-shadow: 0px 2px 5px;
+    border-radius: 0.5rem 2rem; }
+    #profile #header div div img {
+      width: 100%;
+      border-radius: 100vh;
+      max-width: 120px;
+      margin: 1rem; }
+    #profile #header div div h1 {
+      font-weight: 900;
+      text-transform: capitalize;
+      font-size: calc(1.5rem + 2vw); }
+      #profile #header div div h1 a {
+        color: #1034A6; }
+      #profile #header div div h1 a:hover {
+        text-decoration: none; }
+    #profile #header div div h4 {
+      background-color: #1034A6;
+      color: white;
+      display: inline-block;
+      padding: 0.5rem 1.5rem;
+      font-weight: 900;
+      font-size: calc(1.2rem + 1.5vw);
+      border-radius: 2rem; }
+      #profile #header div div h4 span {
+        font-size: 60%; }
+    #profile #header div div ul {
+      list-style: none;
+      padding: 0 0.5rem;
+      margin-bottom: 0;
+      font-family: "Rajdhani", sans-serif; }
+      #profile #header div div ul li {
+        padding: 0.3rem; }
+        #profile #header div div ul li img {
+          width: 1.5rem;
+          margin: 0.3rem 0.5rem; }
+        #profile #header div div ul li span {
+          color: #1034A6;
+          font-weight: 900; }
+  #profile #points {
+    padding: 0.3rem 0; }
+    #profile #points div {
+      padding: 0.5rem; }
+      #profile #points div div {
+        min-height: 100%; }
+        #profile #points div div div {
+          padding: 0.5rem;
+          background: white;
+          box-shadow: 0px 2px 5px;
+          border-radius: 0.5rem; }
+          #profile #points div div div section {
+            padding: 0.3rem 0.5rem; }
+            #profile #points div div div section h4 {
+              margin: 0;
+              color: #1034A6;
+              font-weight: 900;
+              line-height: 0.8; }
+              #profile #points div div div section h4 span {
+                font-size: 60%;
+                line-height: 0.8; }
+            #profile #points div div div section p {
+              margin: 0;
+              font-weight: 600;
+              padding: 0;
+              font-family: "Rajdhani", sans-serif; }
+          #profile #points div div div img {
+            width: 4rem;
+            padding: 0.5rem;
+            height: 100%; }
+  #profile #checklist {
+    padding: 0.3rem 0; }
+    #profile #checklist div {
+      padding: 1rem;
+      margin: 1rem;
+      background: white;
+      box-shadow: 0px 2px 5px;
+      border-radius: 0.3rem;
+      display: flex; }
+      #profile #checklist div i {
+        font-size: calc(0.8rem + 0.8vw);
+        padding-right: 0.5rem; }
+      #profile #checklist div h4 {
+        font-size: calc(0.6rem + 0.5vw);
+        margin: 0; }
+    #profile #checklist .state-True {
+      box-shadow: 2px 2px 2px green;
+      border: 1px solid green; }
+      #profile #checklist .state-True i:before {
+        content: "\f00c";
+        color: green; }
+    #profile #checklist .state-False {
+      box-shadow: 2px 2px 2px red;
+      border: 1px solid red; }
+      #profile #checklist .state-False i:before {
+        content: "\f00d";
+        color: red; }
+
+#topics-items {
+  background: white;
+  padding: 0.5rem;
+  box-shadow: 1px 1px 5px #777;
+  border-radius: 0.5rem;
+  font-family: "Rajdhani", sans-serif; }
+  #topics-items div {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem;
+    justify-content: center; }
+    #topics-items div img {
+      width: 80%; }
+    #topics-items div b {
+      color: #1034A6;
+      text-transform: uppercase; }
+
+.justify-content-left {
+  justify-content: left !important; }
+
+/*# sourceMappingURL=theme.css.map */
