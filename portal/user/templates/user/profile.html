@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}@{{user.username}} | Profile {% endblock %}
+{% block content %}
+<div class="row m-0">
+    <div id="profile" class="col-lg-9">
+        <div id="header">
+            <div class="row m-0">
+                <div class="col-md-2 align-items-center d-flex">
+                    <img src="https://avatars0.githubusercontent.com/u/{{profile.avatar}}?s=512&v=4">
+                </div>
+                <div class="col-md-6 align-items-center d-flex">
+                    <div>
+                        <h1>{{profile.name}}</h1>
+                        <h4>{{profile.points}}<span>xp</span></h4>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h6 class="d-none d-lg-block px-2">STATSs</h6>
+                    <ul>
+                        <li>
+                            <img src="{% static 'user/images/activedays.png' %}">
+                            <span>{{profile.daysCount}}</span> Active Days
+                        </li>
+                        <li>
+                            <img src="{% static 'repo/images/mergetime.png' %}">
+                            <span>{{profile.prCount}}</span> Pull Requests
+                        </li>
+                        <li>
+                            <img src="{% static 'repo/images/repository.png' %}">
+                            <span>{{profile.repoOwnCount}}</span> Repositories
+                        </li>
+                        <li>
+                            <img src="{% static 'repo/images/resolutiontime.png' %}">
+                            <span>{{profile.issueCount}}</span> Issues Reported
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+        <div id="points">
+            <h6 class="d-none d-lg-block pt-3 pl-4"> <img src="{% static 'repo/images/meter.png' %}"> SCORES</h6>
+            <div class="row m-0">
+                <div class="col-md-3 col-6">
+                    <div class="d-md-flex align-items-center">
+                        <img src="{% static 'user/images/creation.png' %}">
+                        <section>
+                            <h4>{{profile.creationPoints}}<span>xp</span></h4>
+                            <p>Creation</p>
+                        </section>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="d-md-flex align-items-center">
+                        <img src="{% static 'user/images/contribution.png' %}">
+                        <section>
+                            <h4>{{profile.contributionPoints}}<span>xp</span></h4>
+                            <p>Contribution</p>
+                        </section>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="d-md-flex align-items-center">
+                        <img src="{% static 'repo/images/activity.png' %}">
+                        <section>
+                            <h4>{{profile.activityPoints}}<span>xp</span></h4>
+                            <p>Activity</p>
+                        </section>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                   <div class="d-md-flex align-items-center">
+                        <img src="{% static 'user/images/social.png' %}">
+                        <section>
+                            <h4>{{profile.communityPoints}}<span>xp</span></h4>
+                            <p>Social</p>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row m-0">
+            <div id="topics" class="col-md-6">
+                <h6 class="d-none d-lg-block pt-3 pl-4"> <img src="{% static 'user/images/topics.png' %}"> TOPICS</h6>
+                <div id="topics-items" class="row p-2 my-4 mx-0">
+                        <div class="col-6 justify-content-left pl-4"><b>Topic Name</b></div>
+                        <div class="col-3"><b>Interest</b></div>
+                        <div class="col-3"><b>Skill</b></div>
+                    {% for topic in profile.usertopic_set.all %}
+                        <div class="col-2">
+                             <img src="{{topic.topic.icon}}">
+                        </div>
+                        <div class="col-4 justify-content-left">
+                            {{topic.topic.full_name}}
+                        </div>
+                        <div class="col-3">
+                            {{topic.interest}}
+                        </div>
+                        <div class="col-3">
+                            {{topic.skill}}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-md-6">
+
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 p-3">
+        <h6  class="justify-content-center p-3">  <img src="{% static 'user/images/similarusers.png' %}"> SIMILAR USERS</h6>
+    </div>
+</div>
+
+
+{% endblock %}
