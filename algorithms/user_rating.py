@@ -156,7 +156,7 @@ class UserMetrics:
                 for repo in response["data"]["user"]["repositories"]["edges"]:
                     repoStarsCount = repoStarsCount + repo["node"]["stargazers"]["totalCount"]
                 if repoStarsCount>0:
-                    self.creationPoints =  (2 * repoStarsCount/self.repoOwnCount) * self.repoOwnCount
+                    self.creationPoints =  (10 * repoStarsCount/self.repoOwnCount) 
                 else:
                     self.creationPoints = 0.5 * self.repoOwnCount
             else:
