@@ -2,7 +2,7 @@
 
 
 ## Rating Algorithms
-There are about 12 metrics in total for ranking the user and repo, here each metric has its own specific API query. The process is simple : we fetch the data from GitHub APIs which is already streamlined for a specific metric, cut down the data further (if needed) and then assign appropriate weights to these numbers to form a score of a User or a Repo.
+Each metric defined below has its own specific API query. The process is simple : we fetch the data from GitHub APIs which is already streamlined for a specific metric, cut down the data further (if needed) and then assign appropriate weights to these numbers to form a score of a User or a Repo.
 
 -----------------------------------------------------------------------------------------
 
