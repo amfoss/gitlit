@@ -10,6 +10,9 @@ import collections
 from datetime import datetime
 from dateutil import parser, relativedelta
 import os
+
+import csv
+
 module_dir = os.path.dirname(__file__)  # get current directory
 
 def runquery(token, query):
@@ -122,7 +125,7 @@ class UserMetrics:
             self.yCommitsCount = response["data"]["user"]["contributionsCollection"]["totalCommitContributions"]
             self.yPRCount = response["data"]["user"]["contributionsCollection"]["totalPullRequestContributions"]
             self.yReposCount = response["data"]["user"]["contributionsCollection"]["totalRepositoryContributions"]
-            self.yIssueCount = response["data"]["user"]["contributionsCollection"]["totalIssueContributions"]
+            self.yIssueCount = response ["data"]["user"]["contributionsCollection"]["totalIssueContributions"]
             self.yReviewCount = response["data"]["user"]["contributionsCollection"]["totalPullRequestReviewContributions"]
 
             self.basePoints = round(0.3 * self.yCommitsCount + 0.3 * self.yPRCount + 0.3 * self.yReposCount + 0.2 * self.yIssueCount + 0.2 * self.yReviewCount, 2)
@@ -156,7 +159,7 @@ class UserMetrics:
                 for repo in response["data"]["user"]["repositories"]["edges"]:
                     repoStarsCount = repoStarsCount + repo["node"]["stargazers"]["totalCount"]
                 if repoStarsCount>0:
-                    self.creationPoints =  (10 * repoStarsCount/self.repoOwnCount) 
+                    self.creationPoints =  (2 * repoStarsCount/self.repoOwnCount) * self.repoOwnCount
                 else:
                     self.creationPoints = 0.5 * self.repoOwnCount
             else:
@@ -458,3 +461,19 @@ class UserMetrics:
         updateSkillsetValue(issueTopicDict)
         updateSkillsetValue(self.topicSkill)
         self.topicSkill = dict(sorted(self.topicSkill.items(), key=lambda x: x[1], reverse=True))
+
+
+username = input("Enter the username: ")
+user = UserMetrics(username, "03e5d817f468829fd9b3307f55de055461460c1a")
+
+print()
+print("The Base Score is " + str(user.basePoints))
+print("The Creation Points is " + str(user.creationPoints))
+print("The Activity Points is " + str(user.activityPoints))
+print("The Contribution Points is " + str(user.contributionPoints))
+print()
+print("The Topic Interests are \n" + str(user.topicInterestDict))
+print()
+print("The Topic Skill are \n" + str(user.topicSkillDict))
+print()
+print("The User Points is " + str(user.userPoints))
