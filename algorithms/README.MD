@@ -1,12 +1,12 @@
 # GitLit Algorithms
 
 
-## Rating Algorithms
+## Rating Algorithms 
 Each metric defined below has its own specific API query. The process is simple : we fetch the data from GitHub APIs which is already streamlined for a specific metric, cut down the data further (if needed) and then assign appropriate weights to these numbers to form a score of a User or a Repo.
 
 -----------------------------------------------------------------------------------------
 
-### User Rating
+## User Rating
 A total of 5 metrics have been designed to rate the user and the algorithms are designed according to the process mentioned above.
 
 Each score is a boundless score calculated by summation of weighted sums of each of the following metric.
@@ -127,5 +127,121 @@ SKill score for a topic is finally calculated as :
 <a href="https://www.codecogs.com/eqnedit.php?latex=Skill&space;Score&space;=&space;(Number&space;of&space;PR&space;in&space;the&space;Topic)&space;&plus;&space;(Number&space;of&space;Issue&space;in&space;the&space;Topic)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Skill&space;Score&space;=&space;(Number&space;of&space;PR&space;in&space;the&space;Topic)&space;&plus;&space;(Number&space;of&space;Issue&space;in&space;the&space;Topic)" title="Skill Score = (Number of PR in the Topic) + (Number of Issue in the Topic)" /></a>
 
 -----------------------------------------------------------------------------------------
+
+## Repository Rating
+
+### General Traits
+
+1. General activity and relevance of repo
+
+*Motive : To get a basic idea*
+
+| Weight  | Trait              |
+|-------- | ------------------ |
+| 3       | Number of watchers |
+| 2       | Numer of stars     |
+| 5       | Number of PRs      |
+| 1.5     | Number of forks    |
+|  4      | Number of issues   |
+
+#### Base Score
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\mathbf{Base&space;Score}&space;=&space;(0.3&space;*&space;Watchers)&space;&plus;&space;(0.2&space;*&space;Stars)&space;&plus;&space;(0.15&space;*&space;Forks)&space;&plus;&space;(0.5&space;*&space;PRs)&space;&plus;&space;(0.4&space;*&space;Issues)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\mathbf{Base&space;Score}&space;=&space;(0.3&space;*&space;Watchers)&space;&plus;&space;(0.2&space;*&space;Stars)&space;&plus;&space;(0.15&space;*&space;Forks)&space;&plus;&space;(0.5&space;*&space;PRs)&space;&plus;&space;(0.4&space;*&space;Issues)" title="\mathbf{Base Score} = (0.3 * Watchers) + (0.2 * Stars) + (0.15 * Forks) + (0.5 * PRs) + (0.4 * Issues)" /></a>
+-----------------------------------------------------------------------------------------
+
+### Actvity
+
+1. Average Issue Resolution Time
+
+*Motive : To weigh the response time*
+
+| Weight  | Formula            |
+|-------- | ------------------ |
+|  8      | <a href="https://www.codecogs.com/eqnedit.php?latex=\frac{TimeTakenToCloseIssues}{TotalNuberOfIssues}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\frac{TimeTakenToCloseIssues}{TotalNuberOfIssues}" title="\frac{TimeTakenToCloseIssues}{TotalNuberOfIssues}" /></a> |
+
+Average Issue Resolution Score is calculated from the above formula based on the following conditions : 
+
+| Average Issue Resolution Time  ( in days )  |  Score  |
+| ------------------------------------------- | ------- |
+|     less than or equal to 20                |  20     |
+|     less than or equal to 50                |  10     |
+|     greater than 50                         |   5     |
+
+2. Weekly Contributor Count
+
+*Motive : To acount for contributor activity*
+
+(*Note : A contributor,here, means anyone who has created an Issue or a PR*)
+
+
+| Weight  | Formula            |
+|-------- | ------------------ |
+| 5       |  <a href="https://www.codecogs.com/eqnedit.php?latex=No.OfWeeklyContributor" target="_blank"><img src="https://latex.codecogs.com/gif.latex?No.OfWeeklyContributor" title="No.OfWeeklyContributor" /></a> |
+
+3. Weekly Contributor Change
+
+*Motive : To acount for contributor activity*
+
+| Weight  | Formula            |
+|-------- | ------------------ |
+|  8      |  <a href="https://www.codecogs.com/eqnedit.php?latex=TotalContributorCount&space;-&space;WeeklyContributorCount" target="_blank"><img src="https://latex.codecogs.com/gif.latex?TotalContributorCount&space;-&space;WeeklyContributorCount" title="TotalContributorCount - WeeklyContributorCount" /></a> |
+
+
+#### Activity Score
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=ActivityScore&space;=&space;(8*AvgIssueResolutionScore)&space;&plus;&space;(5*WeeklyContributorCount)&space;&plus;&space;(8*WeeklyContributorChange)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?ActivityScore&space;=&space;(8*AvgIssueResolutionScore)&space;&plus;&space;(5*WeeklyContributorCount)&space;&plus;&space;(8*WeeklyContributorChange)" title="ActivityScore = (8*AvgIssueResolutionScore) + (5*WeeklyContributorCount) + (8*WeeklyContributorChange)" /></a>
+
+
+-----------------------------------------------------------------------------------------
+
+### Inclusivity 
+
+1. PR Acceptance Ratio
+
+*Motive : To account for new code submitted w.r.t old code*
+
+| Weight  | Formula            |
+|-------- | ------------------ |
+|    8    |  <a href="https://www.codecogs.com/eqnedit.php?latex=\frac{MergedPRs}{TotalNumberOfPRs}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\frac{MergedPRs}{TotalNumberOfPRs}" title="\frac{MergedPRs}{TotalNumberOfPRs}" /></a> |
+
+2.  New Contributor Count
+
+*Motive : To account for first time contributors to repo in the week* 
+
+| Weight  | Formula            |
+|-------- | ------------------ |
+|    4    | <a href="https://www.codecogs.com/eqnedit.php?latex=No.OfFirstTimeContributorToRepo" target="_blank"><img src="https://latex.codecogs.com/gif.latex?No.OfFirstTimeContributorToRepo" title="No.OfFirstTimeContributorToRepo" /></a> |
+
+#### Inclusivity Score
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=InclusivityScore&space;=&space;(0.8&space;*&space;PRacceptanceRatio&space;)&space;&plus;&space;(&space;0.4*No.OfNewContributors&space;)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?InclusivityScore&space;=&space;(0.8&space;*&space;PRacceptanceRatio&space;)&space;&plus;&space;(&space;0.4*No.OfNewContributors&space;)" title="InclusivityScore = (0.8 * PRacceptanceRatio ) + ( 0.4*No.OfNewContributors )" /></a>
+
+-----------------------------------------------------------------------------------------
+
+
+### Merit 
+
+1. Complexity of Repo
+
+It is estimated by calcuating the Skill Points of the top 10 contributors of the repo in the topics the Repo and the Contributors both share.
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=RepoComplexity&space;=&space;(SkillPointsOfTopTenContributors)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?RepoComplexity&space;=&space;(SkillPointsOfTopTenContributors)" title="RepoComplexity = (SkillPointsOfTopTenContributors)" /></a>
+
+#### Merit Score
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=Merit&space;Score&space;=&space;Repo&space;Complexity" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Merit&space;Score&space;=&space;Repo&space;Complexity" title="Merit Score = Repo Complexity" /></a>
+
+-----------------------------------------------------------------------------------------
+
+
+### Total Repo Score
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=Total&space;Repo&space;Score&space;=&space;BaseScore&space;&plus;&space;ActivityScore&space;&plus;InclusivityScore&space;&plus;&space;MeritScore" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Total&space;Repo&space;Score&space;=&space;BaseScore&space;&plus;&space;ActivityScore&space;&plus;InclusivityScore&space;&plus;&space;MeritScore" title="Total Repo Score = BaseScore + ActivityScore +InclusivityScore + MeritScore" /></a>
+
+
+
+ -----------------------------------------------------------------------------------------
+
+
 
 
