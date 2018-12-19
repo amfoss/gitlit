@@ -35,7 +35,31 @@ their projects, and monitor community members.
 
 ## How it Works?  :electric_plug:
 
-A set of scores are calculated for the user and based on these scores, appropriate repositories are searched and matched. 
+A set of scores are calculated for the user and based on these scores, appropriate repositories are searched and matched.
+
+### Rating
+
+**User Analysis:**
+
+- Base Score : General cliche’ metrics
+- Creation : How good the developer’s own project are?
+- Contribution : How active is the developer in contributing to other repositories?
+- Community : How large is the network of the repository?
+- Activity : How frequently does the user contribute?
+- Topic-wise Metrics -
+  - Skill Score : represents the skill a user has for a topic?
+  - Interest Score: how interested the user is in the topic?
+
+**Repo Analysis:**
+
+- Merit: How valuable is the community to FOSS?
+- Activity: How engaging and active is the community?
+- Popularity: How popular is the community?
+- Inclusivity : How likely is the community open to new contributors? 
+
+### Data collection 
+
+For API and query working details - please refer to [/api](/api/README.md)
 
 ----------------------------------------------------------------------------------------------------------------------
 
