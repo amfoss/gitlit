@@ -1,9 +1,10 @@
 # GitLit :fire:
+GitLit is a web app that rates repositories and contributors through an algorithm which takes into consideration a range of metrics, from standard metrics like Stars, Forks, and PRs to accounting for factors like Activity in the Community (eg: Issue Resolution, PR Resolution time, Feature Addition),  backgrounds of the contributors, Inclusivity and Value.  
 
-Open Source contributions have largely been limited to some popular organizations since it has been difficult for new innovative projects to gain attention and acquire a group of interested and skilled contributors. 
+## Why GitLit? :thinking:
+Open Source is, by large, hard to adjust into. Whenever one enters the world of Open Source, he/she is, in most of the cases, greeted by large organizations where new contributors may find difficult to contribute something worthy - it can be their lack of patience or simply the lack of enough skills or it might be what we think it is - simply the lack of finding the correct projects. Contributions, in general,  have largely been limited to some popular organizations since it has been difficult for new innovative projects to gain attention and acquire a group of interested and skilled contributors. 
 Furthermore, the same is the case for contributors to discover interesting and contributable communities and then to find workable issues and cool features - all in all - a complicated and a time-taking task, often leading many beginners to drop out of Open Source as they lack the know-how to get started.  
 
-GitLit is a web app that rates repositories and contributors through an algorithm which takes into consideration not only a few standard metrics like Stars, Forks, and PRs, but also accounting for factors like Activity in the Community (eg: Issue Resolution, PR Resolution, Feature Addition),  backgrounds of the contributors and many more. 
 
 ----------------------------------------------------------------------------------------------------------------------
 ## Target Customers  :bowtie:
