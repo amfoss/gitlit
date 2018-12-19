@@ -1,14 +1,14 @@
-# GitLit
+# GitLit :fire:
 
-The contributions to Open Source have largely been limited to some popular organizations since it has been hard for new innovative projects to gain attention, and acquire a group of interested and talented contributors. 
+Open Source contributions have largely been limited to some popular organizations since it has been difficult for new innovative projects to gain attention and acquire a group of interested and skilled contributors. 
+Furthermore, the same is the case for contributors to discover interesting and contributable communities and then to find workable issues and cool features - all in all - a complicated and a time-taking task, often leading many beginners to drop out of Open Source as they lack the know-how to get started.  
 
-Furthermore, even for the contributors, discovering interesting and contributable communities, and then to find workable issues and cool features to take up, is, in fact, a complicated and time-taking task, often leading many beginners to drop out of Open Source as they don't know where and how to get started. 
+GitLit is a web app that rates repositories and contributors through an algorithm which takes into consideration not only a few standard metrics like Stars, Forks, and PRs, but also accounting for factors like Activity in the Community (eg: Issue Resolution, PR Resolution, Feature Addition),  backgrounds of the contributors and many more. 
 
-GitLit is a web app that rates repositories and contributors through a logical algorithm which takes into consideration not only a few standard metrics like Stars, Forks, and PRs, but also accounting for factors like Activity in the Community (eg: Issue Resolution, Feature Addition),  backgrounds of the contributors etc.
-
-## Target Customers
+----------------------------------------------------------------------------------------------------------------------
+## Target Customers  :bowtie:
 GitLit has two primary use-cases, one for the developers to discover interesting projects and the other is for 
-people in the industry to find talented and enthusiatic developers. 
+people in the industry to find talented and enthusiastic developers. 
 
 **Project Discovery**
 
@@ -30,11 +30,20 @@ their projects, and monitor community members.
  * **Corporate Recruiters:** Corporate companies can discover developers, with the required talent and passion using
  credible metrics of GitLit 
 
-## How it Works?
+----------------------------------------------------------------------------------------------------------------------
 
-## Algorithms
+## How it Works?  :electric_plug:
 
-## Tech Stack
+A set of scores are calculated for the user and based on these scores, appropriate repositories are searched and matched. 
+
+----------------------------------------------------------------------------------------------------------------------
+
+## Algorithms  :computer:
+Please refer to the README file in [/algorithms](/algorithms/README.MD) 
+
+----------------------------------------------------------------------------------------------------------------------
+
+## Tech Stack  :nut_and_bolt:
 
 * **Language:** Python 3.6
 * **Framework (full-stack):** Django
@@ -43,11 +52,15 @@ their projects, and monitor community members.
 * **Javascript Libraries:** jQuery
 * **Stylesheet Pre-processors:** Sass 
 
-## Contributors
+----------------------------------------------------------------------------------------------------------------------
+
+## Contributors :busts_in_silhouette:
 
 1. Venu Vardhan Reddy
-2. Akhil K, Gangadharan
+2. Akhil K Gangadharan
 3. Ashwin S Shenoy
 
-## License
+----------------------------------------------------------------------------------------------------------------------
 
+## License :black_nib:
+GNU General Public License v3.0
