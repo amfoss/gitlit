@@ -1,9 +1,10 @@
 # GitLit :fire:
-GitLit is a web app that rates repositories and contributors through an algorithm which takes into consideration a range of metrics, from standard metrics like Stars, Forks, and PRs to accounting for factors like Activity in the Community (eg: Issue Resolution, PR Resolution time, Feature Addition),  backgrounds of the contributors, Inclusivity and Value.  
+GitLit is a web app that rates repositories and contributors through an algorithm which takes into consideration a range of metrics, from standard metrics like Stars, Forks, and PRs to accounting for factors like Activity in the Community (eg: Issue Resolution, PR Resolution time, Feature Addition),  backgrounds of the contributors, Inclusivity and Value.  Gitlit gives you the best and most appropriate projects to contribute to by analysing your skills and interest. 
 
 ## Why GitLit? :thinking:
 Open Source is, by large, hard to adjust into. Whenever one enters the world of Open Source, he/she is, in most of the cases, greeted by large organizations where new contributors may find difficult to contribute something worthy - it can be their lack of patience or simply the lack of enough skills or it might be what we think it is - simply the lack of finding the correct projects. Contributions, in general,  have largely been limited to some popular organizations since it has been difficult for new innovative projects to gain attention and acquire a group of interested and skilled contributors. 
 Furthermore, the same is the case for contributors to discover interesting and contributable communities and then to find workable issues and cool features - all in all - a complicated and a time-taking task, often leading many beginners to drop out of Open Source as they lack the know-how to get started.  
+
 
 
 ----------------------------------------------------------------------------------------------------------------------
@@ -35,7 +36,13 @@ their projects, and monitor community members.
 
 ## How it Works?  :electric_plug:
 
-A set of scores are calculated for the user and based on these scores, appropriate repositories are searched and matched.
+A set of scores are calculated for the user and based on these scores, appropriate repositories (of whose scores are also calculated) are matched.
+
+### User Dashboard
+<img src="/dashboard.jpg" alt="Dashboard.jpg"> 
+
+### Repository Rating
+<img src="/repo.jpg" alt="SampleRepo.jpg">
 
 ### Rating
 
@@ -56,6 +63,8 @@ A set of scores are calculated for the user and based on these scores, appropria
 - Activity: How engaging and active is the community?
 - Popularity: How popular is the community?
 - Inclusivity : How likely is the community open to new contributors? 
+
+Scores for each of the above mentioned trait for user and repo are calculated, and matching is performed. 
 
 ### Data collection 
 
@@ -81,9 +90,11 @@ Please refer to the README file in [/algorithms](/algorithms/README.MD)
 
 ## Contributors :busts_in_silhouette:
 
-1. Venu Vardhan Reddy
-2. Akhil K Gangadharan
-3. Ashwin S Shenoy
+1. [Venu Vardhan Reddy](https://github.com/vchrombie)
+2. [Akhil K Gangadharan](https://github.com/akhilam512)
+3. [Ashwin S Shenoy](https://github.com/aswinshenoy)
+
+If you are interested in contributing to GitLit, please contact any of the above contributors.
 
 ----------------------------------------------------------------------------------------------------------------------
 
