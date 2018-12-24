@@ -9,10 +9,8 @@ It offers a much easier and comfortable way to understand, write and send querie
 
 
 ### Examples
-It is recommended to use the [GitHub v4 Explorer](https://developer.github.com/v4/explorer/) to construct and send queries.
-
  
-1. to extract the topic names assigned for a given input repository 
+1. To extract the topic names assigned for a given input repository 
 ```
 query
 {
@@ -35,6 +33,7 @@ query
 This query returns a list of topic names in JSON format.
 
 
+One may use the [GitHub v4 Explorer](https://developer.github.com/v4/explorer/) to test constructing and sending queries.
 
 ### Documentation and References
 
