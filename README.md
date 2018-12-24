@@ -1,14 +1,15 @@
 # GitLit :fire:
-GitLit is a web app that rates repositories and contributors through an algorithm which takes into consideration a range of metrics, from standard metrics like Stars, Forks, and PRs to accounting for factors like Activity in the Community (eg: Issue Resolution, PR Resolution time, Feature Addition),  backgrounds of the contributors, Inclusivity and Value.  Gitlit gives you the best and most appropriate projects to contribute to by analysing your skills and interest. 
+[ALPHA VERSION]
 
+GitLit is a social network exclusively for the Open-Source developers, which works by connecting enthusiastic developers to the most interesting and relevant projects to them, and forming new communities of like-minded passionate developers.   
 
 ## :thinking: Why GitLit? 
-Open Source is, by large, hard to adjust into. Whenever one enters the world of Open Source, he/she is, in most of the cases, greeted by large organizations where new contributors may find difficult to contribute something worthy - it can be their lack of patience or simply the lack of enough skills or it might be what we think it is - simply the lack of finding the correct projects. Contributions, in general,  have largely been limited to some popular organizations since it has been difficult for new innovative projects to gain attention and acquire a group of interested and skilled contributors. 
-Furthermore, the same is the case for contributors to discover interesting and contributable communities and then to find workable issues and cool features - all in all - a complicated and a time-taking task, often leading many beginners to drop out of Open Source as they lack the know-how to get started.  
+
+1. **Its hard to find contributable projects** - What if you can get a dashboard full of project and issues suggestions, which are relevant to you - both skill and interest wise?
 
 
-## :bowtie: Target Customers  
-GitLit has two primary use-cases, one for the developers to discover interesting projects and the other is for 
+## :bowtie: Target Users  
+We have found two primary use-cases for GitLit, one for the developers to discover interesting projects and the other is for 
 people in the industry to find talented and enthusiastic developers. 
 
 **Project Discovery**
@@ -34,9 +35,16 @@ their projects, and monitor community members.
 
 ## :electric_plug: How it Works?  
 
-A set of scores are calculated for the user and based on these scores, appropriate repositories (of whose scores are also calculated) are matched.
+### Suggestion Panel to help developers
+1. Fetches all data about a developer, once a developer signs-up.
+2. After analysing his previous contribution pattern, an complex algorithm rates the developer using smart metrics, and classifies him into interest groups.
+3. Based on his interests, and his skill in the given topic of interest, an ML-based matching algorithm matches it with most relevant projects
+4. The developer recieves relevant and interesting suggestions for projects, and issues.  
 
-### Screenshots
+### Discovery Panel to help projects
+
+
+### Some Screenshots
 <img src="/dashboard.jpg" alt="User Dashboard"> 
 <img src="/repo.jpg" alt="Repository Profile">
 
