@@ -3,8 +3,8 @@
 
 ##  GitHub GraphQL v4 API 
 
-### What is it
 GitHub v4 GraphQL is a shift from the traditional v3 REST API structure of GitHub, as it is a specification which offers an elegant way of data retrieval, offers more efficient queries and more stablitiy to the backend. 
+
 It offers a much easier and comfortable way to understand, write and send queries and that is the reason why almost all the queries used here will be in GraphQL. Although some specific data is not available via GraphQL, REST v3 API is used wherever v4 failed.
 
 
