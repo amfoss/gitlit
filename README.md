@@ -7,7 +7,7 @@ It works by connecting enthusiastic developers to the most interesting and relev
 
 ## :thinking: Why GitLit? 
 
-1. **Its hard to find contributable projects** - What if you can get a dashboard full of project and issues suggestions, which are relevant to you - both skill and interest wise?
+1. **It is difficult to find contributable projects** - What if you can get a dashboard full of project and issues suggestions, which are relevant to you - both skill and interest wise?
 
 
 ## :bowtie: Target Users  
@@ -102,4 +102,4 @@ View algorithm documentation at [/algorithms](/algorithms/README.MD)
 Contributions are welcome! <3
 
 ## :black_nib: License 
-GNU General Public License v3.0
+[GNU General Public License v3.0](/LICENSE)
