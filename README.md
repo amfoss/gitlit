@@ -1,7 +1,9 @@
 # GitLit :fire:
 [ALPHA VERSION]
 
-GitLit is a social network exclusively for the Open-Source developers, which works by connecting enthusiastic developers to the most interesting and relevant projects to them, and forming new communities of like-minded passionate developers.   
+GitLit is a social network exclusively for Open-Source developers.
+
+It works by connecting enthusiastic developers to the most interesting and relevant projects to them and forming new communities of like-minded and passionate developers.   
 
 ## :thinking: Why GitLit? 
 
@@ -9,7 +11,7 @@ GitLit is a social network exclusively for the Open-Source developers, which wor
 
 
 ## :bowtie: Target Users  
-We have found two primary use-cases for GitLit, one for the developers to discover interesting projects and the other is for 
+There are two primary use-cases for GitLit, one for the developers to discover interesting projects and the other is for 
 people in the industry to find talented and enthusiastic developers. 
 
 **Project Discovery**
@@ -17,8 +19,8 @@ people in the industry to find talented and enthusiastic developers.
 * **Students & Beginners:** GitLit can be used by students and beginners to get started into the world of Open Source.
 It helps them to break-the-ice, and kick-start their FOSS journey without essentially going into deeper level they can.
 
-* **Developers** GitLit can also be used by amateur as well as professional developers to discover innovate, interesting
-and relevant projects to contribute to, based on their skill level.
+* **Developers** GitLit can also be used by amateur as well as professional developers to discover innovative, interesting
+and relevant projects to contribute to - based on their skill level.
 
 **Developer Discovery**
 
@@ -26,11 +28,11 @@ and relevant projects to contribute to, based on their skill level.
 contributors, who are interested in their organization, and connect with them. It can be also used by them to analyse 
 their projects, and monitor community members. 
 
-* **College Clubs:** College based computer clubs like amFOSS, can use GitLit to identify enthusiastic and talented 
- students out of a large pool, effectively monitor them and check their progress.
+* **College Clubs:** College based computer clubs like [amFOSS](http://amfoss.in/), can use GitLit to identify enthusiastic and talented 
+ students out of a large pool and effectively monitor and check their progress.
  
  * **Corporate Recruiters:** Corporate companies can discover developers, with the required talent and passion using
- credible metrics of GitLit 
+ credible metrics of GitLit. 
 
 
 ## :electric_plug: How it Works?  
@@ -39,7 +41,7 @@ their projects, and monitor community members.
 1. Fetches all data about a developer, once a developer signs-up.
 2. After analysing his previous contribution pattern, an complex algorithm rates the developer using smart metrics, and classifies him into interest groups.
 3. Based on his interests, and his skill in the given topic of interest, an ML-based matching algorithm matches it with most relevant projects
-4. The developer recieves relevant and interesting suggestions for projects, and issues.  
+4. The developer recieves relevant and interesting suggestions for projects and issues.  
 
 ### Discovery Panel to help projects
 
@@ -54,8 +56,8 @@ their projects, and monitor community members.
 
 **User Metrics:**
 
-- Base Score : General cliche’ metrics
-- Creation : How good the developer’s own project are?
+- Base Score : General cliche metrics
+- Creation : How good the developer’s own projects are?
 - Contribution : How active is the developer in contributing to other repositories?
 - Community : How large is the network of the repository?
 - Activity : How frequently does the user contribute?
@@ -97,7 +99,7 @@ View algorithm documentation at [/algorithms](/algorithms/README.MD)
 2. [Akhil K Gangadharan](https://github.com/akhilam512)
 3. [Ashwin S Shenoy](https://github.com/aswinshenoy)
 
-Contributors are welcome! <3
+Contributions are welcome! <3
 
 ## :black_nib: License 
 GNU General Public License v3.0
