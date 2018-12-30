@@ -3,6 +3,11 @@
 
 GitLit is a social network exclusively for the Open-Source developers, which works by connecting enthusiastic developers to the most interesting and relevant projects to them, and forming new communities of like-minded passionate developers.   
 
+### Brief Features
+1. Adavanced Rating System for Contributor's & Repositories on GitHub
+2. Intelligent Identification of Contributor's Interest & Skills
+3. Smart & Relevant Mapping of Repositories & Contributor's based on shared interests and skill-level. 
+
 ## :thinking: Why GitLit? 
 
 1. **Its hard to find contributable projects** - What if you can get a dashboard full of project and issues suggestions, which are relevant to you - both skill and interest wise?
@@ -43,38 +48,22 @@ their projects, and monitor community members.
 
 ### Discovery Panel to help projects
 
-## Technical Details
-
-### Rating Metrics
-
-**User Metrics:**
-
-- Base Score : General cliche’ metrics
-- Creation : How good the developer’s own project are?
-- Contribution : How active is the developer in contributing to other repositories?
-- Community : How large is the network of the repository?
-- Activity : How frequently does the user contribute?
-- Topic-wise Metrics -
-  - Skill Score : represents the skill a user has for a topic?
-  - Interest Score: how interested the user is in the topic?
-
-**Repo Metrics:**
-
-- Merit: How valuable is the community to FOSS?
-- Activity: How engaging and active is the community?
-- Popularity: How popular is the community?
-- Inclusivity : How likely is the community open to new contributors? 
-
-Scores for each of the above mentioned trait for user and repo are calculated, and matching is performed. 
-
-### Data Sourcing 
-
-View GitHub API-related documentation at [/api](/api/README.md)
-
-
-### :computer: Algorithms  
-
-View algorithm documentation at [/algorithms](/algorithms/README.MD) 
+## Documentation
+* **Algorithms**
+  * **Documentation**
+  * [**Working Code**](/algorithms/README.MD) 
+* **Data**
+  * [**GitHub API**](https://github.com/teamdeadlock/GitLit/wiki/GitHub-API)
+  * **Limitations in Sourcing & Processing**
+* **Metrics**
+  * [**User Metrics**](https://github.com/teamdeadlock/GitLit/wiki/Metrics:-Repository-Metrics)
+  * [**Repository Metrics**](https://github.com/teamdeadlock/GitLit/wiki/Metrics:-Repository-Metrics)
+* **Interest Identification**
+  * **Using GitHub Topics as basis for Interest Classfication**
+  * [**Finding User's Topics of Interest**](https://github.com/teamdeadlock/GitLit/wiki/Topics:-Identifying-Project-Topics)
+  * [**Weighting Topics of Interest**](https://github.com/teamdeadlock/GitLit/wiki/Topics:-Weighting-Topics-of-Interest)
+  * [**Identification of Project Topics**](https://github.com/teamdeadlock/GitLit/wiki/Topics:-Identifying-Project-Topics)
+* **Matching**
 
 ## :nut_and_bolt: Tech Stack  
 
