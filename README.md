@@ -3,11 +3,6 @@
 
 GitLit is a social network exclusively for the Open-Source developers, which works by connecting enthusiastic developers to the most interesting and relevant projects to them, and forming new communities of like-minded passionate developers.   
 
-### Top Features
-1. Adavanced Rating System for Contributor's & Repositories on GitHub
-2. Intelligent Identification of Contributor's Interest & Skills
-3. Smart & Relevant Mapping of Repositories & Contributor's based on shared interests and skill-level. 
-
 ## :thinking: Why GitLit? 
 
 1. **Its hard to find contributable projects** - What if you can get a dashboard full of project and issues suggestions, which are relevant to you - both skill and interest wise?
@@ -47,6 +42,15 @@ their projects, and monitor community members.
 4. The developer recieves relevant and interesting suggestions for projects, and issues.  
 
 ### Discovery Panel to help projects
+
+
+### Top Features
+1. Adavanced Rating System for Contributor's & Repositories on GitHub
+2. Intelligent Identification of Contributor's Interest & Skills
+3. Smart & Relevant Mapping of Repositories & Contributor's based on shared interests and skill-level. 
+4. Suggestion feed of contributable repositories, and notifications for fixable issues
+5. View similar repositories and users
+6. Intelligent Insights with actionable feedbacks & checklist for contributors and repositories
 
 ## Documentation
 * **Algorithms**
