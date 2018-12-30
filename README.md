@@ -15,7 +15,7 @@ people in the industry to find talented and enthusiastic developers.
 **Project Discovery**
 
 * **Students & Beginners:** GitLit can be used by students and beginners to get started into the world of Open Source.
-It helps them to break-the-ice, and kick-start their FOSS journey without essentially going into deeper level they can.
+It helps them to break-the-ice, and kick-start their FOSS journey without essentially going into deeper level.
 
 * **Developers** GitLit can also be used by amateur as well as professional developers to discover innovate, interesting
 and relevant projects to contribute to, based on their skill level.
