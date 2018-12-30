@@ -52,10 +52,10 @@ their projects, and monitor community members.
 * **Algorithms**
   * **Documentation**
   * [**Working Code**](/algorithms/README.MD) 
-* **Data**
+* **Data Sourcing & Processing**
   * [**GitHub API**](https://github.com/teamdeadlock/GitLit/wiki/GitHub-API)
   * **Limitations in Sourcing & Processing**
-* **Metrics**
+* **Rating Metrics**
   * [**User Metrics**](https://github.com/teamdeadlock/GitLit/wiki/Metrics:-Repository-Metrics)
   * [**Repository Metrics**](https://github.com/teamdeadlock/GitLit/wiki/Metrics:-Repository-Metrics)
 * **Interest Identification**
@@ -63,7 +63,7 @@ their projects, and monitor community members.
   * [**Finding User's Topics of Interest**](https://github.com/teamdeadlock/GitLit/wiki/Topics:-Identifying-Project-Topics)
   * [**Weighting Topics of Interest**](https://github.com/teamdeadlock/GitLit/wiki/Topics:-Weighting-Topics-of-Interest)
   * [**Identification of Project Topics**](https://github.com/teamdeadlock/GitLit/wiki/Topics:-Identifying-Project-Topics)
-* **Matching**
+* **Matching & Mapping**
 
 ## :nut_and_bolt: Tech Stack  
 
