@@ -8,6 +8,25 @@ GitLit is a social network exclusively for the Open-Source developers, which wor
 1. **Its hard to find contributable projects** - What if you can get a dashboard full of project and issues suggestions, which are relevant to you - both skill and interest wise?
 
 
+
+## :electric_plug: How it Works?  
+
+### Suggestion Panel to help developers
+1. Fetches all data about a developer, once a developer signs-up.
+2. After analysing his previous contribution pattern, an complex algorithm rates the developer using smart metrics, and classifies him into interest groups.
+3. Based on his interests, and his skill in the given topic of interest, an ML-based matching algorithm matches it with most relevant projects
+4. The developer recieves relevant and interesting suggestions for projects, and issues.  
+
+### Discovery Panel to help projects
+
+## Top Features
+1. Adavanced Rating System for Contributor's & Repositories on GitHub
+2. Intelligent Identification of Contributor's Interest & Skills
+3. Smart & Relevant Mapping of Repositories & Contributor's based on shared interests and skill-level. 
+4. Suggestion feed of contributable repositories, and notifications for fixable issues
+5. View similar repositories and users
+6. Intelligent Insights with actionable feedbacks & checklist for contributors and repositories
+
 ## :bowtie: Target Users  
 We have found two primary use-cases for GitLit, one for the developers to discover interesting projects and the other is for 
 people in the industry to find talented and enthusiastic developers. 
@@ -31,26 +50,6 @@ their projects, and monitor community members.
  
  * **Corporate Recruiters:** Corporate companies can discover developers, with the required talent and passion using
  credible metrics of GitLit 
-
-
-## :electric_plug: How it Works?  
-
-### Suggestion Panel to help developers
-1. Fetches all data about a developer, once a developer signs-up.
-2. After analysing his previous contribution pattern, an complex algorithm rates the developer using smart metrics, and classifies him into interest groups.
-3. Based on his interests, and his skill in the given topic of interest, an ML-based matching algorithm matches it with most relevant projects
-4. The developer recieves relevant and interesting suggestions for projects, and issues.  
-
-### Discovery Panel to help projects
-
-
-### Top Features
-1. Adavanced Rating System for Contributor's & Repositories on GitHub
-2. Intelligent Identification of Contributor's Interest & Skills
-3. Smart & Relevant Mapping of Repositories & Contributor's based on shared interests and skill-level. 
-4. Suggestion feed of contributable repositories, and notifications for fixable issues
-5. View similar repositories and users
-6. Intelligent Insights with actionable feedbacks & checklist for contributors and repositories
 
 ## Documentation
 * **Algorithms**
