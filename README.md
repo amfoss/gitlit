@@ -43,11 +43,6 @@ their projects, and monitor community members.
 
 ### Discovery Panel to help projects
 
-
-### Some Screenshots
-<img src="/dashboard.jpg" alt="User Dashboard"> 
-<img src="/repo.jpg" alt="Repository Profile">
-
 ## Technical Details
 
 ### Rating Metrics
