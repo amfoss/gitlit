@@ -3,7 +3,7 @@
 
 GitLit is a social network exclusively for the Open-Source developers, which works by connecting enthusiastic developers to the most interesting and relevant projects to them, and forming new communities of like-minded passionate developers.   
 
-### Brief Features
+### Top Features
 1. Adavanced Rating System for Contributor's & Repositories on GitHub
 2. Intelligent Identification of Contributor's Interest & Skills
 3. Smart & Relevant Mapping of Repositories & Contributor's based on shared interests and skill-level. 
