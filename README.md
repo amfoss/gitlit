@@ -1,22 +1,11 @@
 # GitLit :fire:
-[ALPHA VERSION]
+![Status](https://img.shields.io/badge/Status-Under_Development-Red.svg) ![Version 0.1](https://img.shields.io/badge/Version-0.1_(Alpha)-green.svg) ![GNU GPU](https://img.shields.io/badge/License-GNU_GPL_v3.0-blue.svg)  ![Maintainers](https://img.shields.io/badge/Maintainers-3-Orange.svg) ![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-Green.svg)
 
 GitLit is a social network exclusively for Open-Source developers. It works by connecting enthusiastic developers to the most interesting and relevant projects to them and forming new communities of like-minded and passionate developers.   
 
 ## :thinking: Why GitLit? 
 
 1. **It is difficult to find contributable projects** - What if you can get a dashboard full of project and issues suggestions, which are relevant to you - both skill and interest wise?
-
-
-## :electric_plug: How it Works?  
-
-### Suggestion Panel to help developers
-1. Fetches all data about a developer, once a developer signs-up.
-2. After analysing his previous contribution pattern, an complex algorithm rates the developer using smart metrics, and classifies him into interest groups.
-3. Based on his interests, and his skill in the given topic of interest, an ML-based matching algorithm matches it with most relevant projects
-4. The developer recieves relevant and interesting suggestions for projects, and issues.  
-
-### Discovery Panel to help projects
 
 ## :star2: Top Features
 1. Adavanced Rating System for Contributor's & Repositories on GitHub
@@ -50,8 +39,6 @@ their projects, and monitor community members.
  * **Corporate Recruiters:** Corporate companies can discover developers, with the required talent and passion using
  credible metrics of GitLit. 
 
-
-=======
 ## :bookmark_tabs: Documentation
 * **Algorithms**
   * **Documentation**
@@ -69,6 +56,16 @@ their projects, and monitor community members.
   * [**Identification of Project Topics**](https://github.com/teamdeadlock/GitLit/wiki/Topics:-Identifying-Project-Topics)
 * **Matching & Mapping**
 
+## :electric_plug: How it Works?  
+
+### Suggestion Panel to help developers
+1. Fetches all data about a developer, once a developer signs-up.
+2. After analysing his previous contribution pattern, an complex algorithm rates the developer using smart metrics, and classifies him into interest groups.
+3. Based on his interests, and his skill in the given topic of interest, an ML-based matching algorithm matches it with most relevant projects
+4. The developer recieves relevant and interesting suggestions for projects, and issues.  
+
+### Discovery Panel to help projects
+
 
 ## :nut_and_bolt: Tech Stack  
 
@@ -80,7 +77,7 @@ their projects, and monitor community members.
 * **Stylesheet Pre-processors:** Sass 
 
 
-##  :busts_in_silhouette: Contributors
+##  :busts_in_silhouette: Creators
 
 1. [Venu Vardhan Reddy](https://github.com/vchrombie)
 2. [Akhil K Gangadharan](https://github.com/akhilam512)
