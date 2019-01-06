@@ -29,7 +29,7 @@ Pygments==2.3.0
 PyJWT==1.7.1
 python3-openid==3.1.0
 pytz==2018.7
-PyYAML==3.13
+pyyaml>=4.2b1
 requests==2.20.1
 requests-oauthlib==1.0.0
 rsa==4.0
