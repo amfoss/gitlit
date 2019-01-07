@@ -1,5 +1,16 @@
 # GitLit :fire:
-![Status](https://img.shields.io/badge/Status-Under_Development-Red.svg) ![Version 0.1](https://img.shields.io/badge/Version-0.1_(Alpha)-green.svg) ![GNU GPU](https://img.shields.io/badge/License-GNU_GPL_v3.0-blue.svg)  ![Maintainers](https://img.shields.io/badge/Maintainers-3-Orange.svg) ![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-Green.svg)
+![Status](https://img.shields.io/badge/Status-Under_Development-Red.svg) 
+![Version 0.1](https://img.shields.io/badge/Version-0.1_(Alpha)-green.svg) 
+[![GNU][license-badge]][license]
+[![Open Issues][issues-badge]][issues]
+[![PRs][pr-badge]][prs]
+[![Contributors][contributors-badge]][contributors]
+
+
+[![Watchers][watchers-badge]][watchers]
+[![Star Gazers][stars-badge]][stargazers]
+[![Forks][forks-badge]][forks]
+
 
 GitLit is a social network exclusively for Open-Source developers. It works by connecting enthusiastic developers to the most interesting and relevant projects to them and forming new communities of like-minded and passionate developers.   
 
@@ -87,3 +98,19 @@ Contributions are welcome! <3
 
 ## :black_nib: License 
 [GNU General Public License v3.0](/LICENSE)
+
+[contributors-badge]:https://img.shields.io/github/contributors/amfoss/gitlit.svg
+[contributors]: https://github.com/amfoss/GitLit/graphs/contributors
+[watchers-badge]:https://img.shields.io/github/watchers/amfoss/gitlit.svg?style=social
+[watchers]: https://github.com/amfoss/GitLit/watchers
+[stars-badge]:https://img.shields.io/github/stars/amfoss/gitlit.svg?style=social
+[stargazers]:https://github.com/amfoss/GitLit/stargazers
+[forks-badge]: https://img.shields.io/github/forks/amfoss/gitlit.svg?style=social
+[forks]: https://github.com/amfoss/GitLit/network/members
+[license-badge]: https://img.shields.io/github/license/amfoss/gitlit.svg
+[license]: https://github.com/amfoss/gitlit/blob/master/LICENSE
+[issues-badge]: https://img.shields.io/github/issues/amfoss/gitlit.svg
+[issues]: https://github.com/amfoss/gitlit/issues
+[pr-badge]:https://img.shields.io/github/issues-pr/amfoss/gitlit.svg
+[prs]: https://github.com/amfoss/gitlit/pulls
+
