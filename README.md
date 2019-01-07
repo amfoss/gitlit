@@ -1,4 +1,8 @@
 # GitLit :fire:
+[![Watchers][watchers-badge]][watchers]
+[![Star Gazers][stars-badge]][stargazers]
+[![Forks][forks-badge]][forks]
+
 ![Status](https://img.shields.io/badge/Status-Under_Development-Red.svg) 
 ![Version 0.1](https://img.shields.io/badge/Version-0.1_(Alpha)-green.svg) 
 [![GNU][license-badge]][license]
@@ -7,19 +11,16 @@
 [![Contributors][contributors-badge]][contributors]
 
 
-[![Watchers][watchers-badge]][watchers]
-[![Star Gazers][stars-badge]][stargazers]
-[![Forks][forks-badge]][forks]
-
-
 GitLit is a social network exclusively for Open-Source developers. It works by connecting enthusiastic developers to the most interesting and relevant projects to them and forming new communities of like-minded and passionate developers.   
 
 ## :thinking: Why GitLit? 
 
 1. **It is difficult to find contributable projects** - What if you can get a dashboard full of project and issues suggestions, which are relevant to you - both skill and interest wise?
 
+2. **There is no standards to rate and classify developers & projects** 
+
 ## :star2: Top Features
-1. Adavanced Rating System for Contributor's & Repositories on GitHub
+1. Advanced Rating System for Contributor's & Repositories on GitHub
 2. Intelligent Identification of Contributor's Interest & Skills
 3. Smart & Relevant Mapping of Repositories & Contributor's based on shared interests and skill-level. 
 4. Suggestion feed of contributable repositories, and notifications for fixable issues
