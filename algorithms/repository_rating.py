@@ -415,7 +415,7 @@ class RepositoryMetrics:
 
 
     
-accessToken = "03e5d817f468829fd9b3307f55de055461460c1a"
+accessToken = "<token-here>"
 headers = {"Authorization": "bearer "+ accessToken }
 
 username = input("Enter the owner name: ")
