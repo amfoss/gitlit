@@ -3,8 +3,7 @@ from algorithms.repository_rating import RepositoryMetrics
 from .forms import DetailForm
 # Create your views here.
 def get_repodetails(request, owner, reponame):
-    headers = {"Authorization": "bearer " + '00374b8690a5e169fe6d1c07eb1d80c90e8e3851'}
-    repodetails = RepositoryMetrics(reponame, owner, '00374b8690a5e169fe6d1c07eb1d80c90e8e3851')
+    repodetails = RepositoryMetrics(reponame, owner, '<token>')
 
     return render(request, 'repo/list_repo.html', {'repodetails': repodetails})
 

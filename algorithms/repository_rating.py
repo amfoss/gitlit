@@ -418,7 +418,7 @@ class RepositoryMetrics:
         self.repoPoints = self.basePoints + self.activityPoints + self.inclusivityPoints + self.meritPoints
 
 """
-RepositoryMetrics.token = "00374b8690a5e169fe6d1c07eb1d80c90e8e3851"
+RepositoryMetrics.token = "<token>"
 
 
 username = input("Enter the owner name: ")
