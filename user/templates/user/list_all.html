@@ -3,6 +3,17 @@
     <div>
         <div>
             <p>basepoints: {{ usermetrics.basePoints }}</p>
+            <p>creationPoints: {{ usermetrics.creationPoints }}</p>
+            <p>activityPoints{{ usermetrics.activityPoints }}</p>
+            <p>contributionPoints{{ usermetrics.contributionPoints}}</p>
+            {% for topic,points in usermetrics.topicInterestDict.items %}
+                <li>{{ topic }}:{{ points }}</li>
+            {% endfor %}
+            <p>Skill Points</p>
+            {% for topic,skillpoints in usermetrics.topicSkillDict.items %}
+                <li>{{ topic }}:{{ skillpoints }}</li>
+            {% endfor %}
+            <li>user points:{{usermetrics.userPoints}}</li>
         </div>
     </div>
 {%endblock%}

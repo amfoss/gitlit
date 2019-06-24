@@ -98,7 +98,7 @@ class userTopicResult:
 						contributedTopicList.append(j["topic"]["name"])
 
 
-		fileTopicList = open("topics.txt", "r").read().split('\n')
+		fileTopicList = open("algorithms/topics.txt", "r").read().split('\n')
 
 		topicOccurenceSelf = dict(collections.Counter(x for x in selfTopicList if x))
 		topicOccurenceContributed = dict(collections.Counter(x for x in contributedTopicList if x))

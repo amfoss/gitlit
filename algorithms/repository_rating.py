@@ -6,10 +6,12 @@
 import json
 from datetime import timedelta, datetime
 from dateutil import parser, relativedelta
-from script import userTopicResult
+from algorithms.script import userTopicResult
 
 
 import requests
+
+
 
 class RepositoryMetrics:
 
@@ -17,7 +19,9 @@ class RepositoryMetrics:
         # initialize class variables
         self.name = str(name)
         self.owner = str(owner)
+        self.token = str(token)
         self.reponame = self.name + '-' + self.owner
+        self.headers = {"Authorization": "bearer " + self.token}
 
         # User Profile Details
         self.fullName = ''
@@ -83,7 +87,7 @@ class RepositoryMetrics:
         }
         """
 
-        request = requests.post('https://api.github.com/graphql', json={'query': query}, headers=headers)
+        request = requests.post('https://api.github.com/graphql', json={'query': query}, headers=self.headers)
 
         if request.status_code == 200:
             result              = request.json()
@@ -123,7 +127,7 @@ class RepositoryMetrics:
               }
         }
         """
-        request = requests.post('https://api.github.com/graphql', json={'query': query}, headers=headers)
+        request = requests.post('https://api.github.com/graphql', json={'query': query}, headers=self.headers)
 
         if request.status_code == 200:
             result = request.json()
@@ -186,7 +190,7 @@ class RepositoryMetrics:
           }
         }
         """
-        request = requests.post('https://api.github.com/graphql', json={'query': query}, headers=headers)
+        request = requests.post('https://api.github.com/graphql', json={'query': query}, headers=self.headers)
 
         if request.status_code == 200:
             result = request.json()
@@ -228,7 +232,7 @@ class RepositoryMetrics:
                     self.weeklyContributorNames.remove(user)
 
             self.weeklyContributorsChange = len(clist) - self.weeklyContributorsCount
-            self.weeklyContributorsCount = len(clist)  
+            self.weeklyContributorsCount = len(clist)
 
             # -- ok
 
@@ -270,8 +274,8 @@ class RepositoryMetrics:
             }
         }
         """
-        mergedPR = requests.post('https://api.github.com/graphql', json={'query': merged_prs_query}, headers=headers)
-        totalPR  = requests.post('https://api.github.com/graphql', json={'query': total_prs_query}, headers=headers)
+        mergedPR = requests.post('https://api.github.com/graphql', json={'query': merged_prs_query}, headers=self.headers)
+        totalPR  = requests.post('https://api.github.com/graphql', json={'query': total_prs_query}, headers=self.headers)
 
         if totalPR.status_code == 200 and mergedPR.status_code ==200:
             PRmergedData    = mergedPR.json()
@@ -308,7 +312,7 @@ class RepositoryMetrics:
                   }
                 }
             """
-            request = requests.post('https://api.github.com/graphql', json={'query': query}, headers=headers)
+            request = requests.post('https://api.github.com/graphql', json={'query': query}, headers=self.headers)
 
             if request.status_code == 200:
                 flag = 0
@@ -327,7 +331,7 @@ class RepositoryMetrics:
                         self.firstTimeContributorsThisWeek = self.firstTimeContributorsThisWeek + 1
 
 
-        request = requests.get('https://api.github.com/repos/' + str(self.owner) + '/' + str(self.name) + '/contributors?page=1&per_page=100&access_token='+accessToken)
+        request = requests.get('https://api.github.com/repos/' + str(self.owner) + '/' + str(self.name) + '/contributors?page=1&per_page=100&access_token='+self.token)
 
         if request.status_code == 200:
             result = request.json()
@@ -346,7 +350,7 @@ class RepositoryMetrics:
 
             while(flag!=0):
                 i = i+1
-                request = requests.get('https://api.github.com/repos/' + str(self.owner) + '/' + str(self.name) + '/contributors?page='+ str(i) +'&per_page=100&access_token='+accessToken)
+                request = requests.get('https://api.github.com/repos/' + str(self.owner) + '/' + str(self.name) + '/contributors?page='+ str(i) +'&per_page=100&access_token='+self.token)
 
                 if request.status_code == 200:
 
@@ -365,8 +369,8 @@ class RepositoryMetrics:
 
     def calcMeritScore(self):
 
-    
-        # repo complexity 
+
+        # repo complexity
 
         query = """
         {
@@ -381,21 +385,21 @@ class RepositoryMetrics:
           }
         }
         """
-        request = requests.post('https://api.github.com/graphql', json={'query': query}, headers=headers)
+        request = requests.post('https://api.github.com/graphql', json={'query': query}, headers=self.headers)
         if request.status_code == 200:
             result = request.json()
             clist = list()
             for topic in result["data"]["repository"]["repositoryTopics"]["nodes"]:
                 clist.append(topic["topic"]["name"])
-        
+
             to_delete = set()
-            fileTopicList = open("topics.txt", "r").read().split('\n')
+            fileTopicList = open("algorithms/topics.txt", "r").read().split('\n')
             for topic in clist:
                 if topic not in fileTopicList:
                     to_delete.add(topic)
             clist = list(set(clist)-to_delete)
 
-        request = requests.get("https://api.github.com/repos/"+str(self.owner) + '/' + str(self.name) + "/contributors?page=1&per_page=5&access_token="+accessToken)
+        request = requests.get("https://api.github.com/repos/"+str(self.owner) + '/' + str(self.name) + "/contributors?page=1&per_page=5&access_token="+self.token)
         if request.status_code == 200:
             result = request.json()
             usernameList = list()
@@ -413,14 +417,13 @@ class RepositoryMetrics:
     def calcRepoScore(self):
         self.repoPoints = self.basePoints + self.activityPoints + self.inclusivityPoints + self.meritPoints
 
+"""
+RepositoryMetrics.token = "00374b8690a5e169fe6d1c07eb1d80c90e8e3851"
 
-    
-accessToken = "<token-here>"
-headers = {"Authorization": "bearer "+ accessToken }
 
 username = input("Enter the owner name: ")
 reponame = input("Enter the repository name: ")
-r=RepositoryMetrics(str(reponame), str(username), accessToken)
+r=RepositoryMetrics(str(reponame), str(username), RepositoryMetrics.token)
 
 print()
 print("The Base Points: " + str(r.basePoints))
@@ -429,3 +432,4 @@ print("The Inclusivity Points: " + str(r.inclusivityPoints))
 print("The Merit Points: " + str(r.meritPoints))
 print()
 print("The Repository Score is " + str(r.repoPoints))
+"""
