@@ -2,7 +2,7 @@ import requests
 import json
 import collections
 
-accessToken = "eae96500b42c83992a038e26c74335bf4dbe0984"
+accessToken = "<access-token>"
 headers = {"Authorization": "bearer "+ accessToken }
 
 class userTopicResult:
