@@ -1,0 +1,8 @@
+{% extends 'repo/base.html' %}
+
+{% block content %}
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save">Save</button>
+    </form>
+{% endblock %}

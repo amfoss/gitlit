@@ -462,18 +462,19 @@ class UserMetrics:
         updateSkillsetValue(self.topicSkill)
         self.topicSkill = dict(sorted(self.topicSkill.items(), key=lambda x: x[1], reverse=True))
 
-
+"""
 username = input("Enter the username: ")
-user = UserMetrics(username, "03e5d817f468829fd9b3307f55de055461460c1a")
+user = UserMetrics(username, "<token-here>")
 
 print()
 print("The Base Score is " + str(user.basePoints))
-print("The Creation Points is " + str(user.creationPoints))
-print("The Activity Points is " + str(user.activityPoints))
-print("The Contribution Points is " + str(user.contributionPoints))
+print("The Creation Points is " + str(usermetrics.creationPoints))
+print("The Activity Points is " + str(usermetrics.activityPoints))
+print("The Contribution Points is " + str(usermetrics.contributionPoints))
 print()
-print("The Topic Interests are \n" + str(user.topicInterestDict))
+print("The Topic Interests are \n" + str(usermetrics.topicInterestDict))
 print()
-print("The Topic Skill are \n" + str(user.topicSkillDict))
+print("The Topic Skill are \n" + str(usermetrics.topicSkillDict))
 print()
-print("The User Points is " + str(user.userPoints))
+print("The User Points is " + str(usermetrics.userPoints))
+"""
