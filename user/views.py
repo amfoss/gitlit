@@ -7,7 +7,6 @@ from .forms import NameForm
 
 def list_all(request, your_name):
     usermetrics = UserMetrics(your_name, "<token-here>")
-    print(usermetrics.basePoints)
     return render(request, 'user/list_all.html', {"usermetrics": usermetrics})
 
 def get_username(request):
