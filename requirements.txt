@@ -1,10 +1,17 @@
 certifi==2019.6.16
 chardet==3.0.4
+defusedxml==0.6.0
 Django==2.2.2
 idna==2.8
+oauthlib==3.0.1
+PyJWT==1.7.1
 python-dateutil==2.8.0
+python3-openid==3.1.0
 pytz==2019.1
 requests==2.22.0
+requests-oauthlib==1.2.0
 six==1.12.0
+social-auth-app-django==3.1.0
+social-auth-core==3.2.0
 sqlparse==0.3.0
 urllib3==1.25.3

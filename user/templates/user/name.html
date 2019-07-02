@@ -1,8 +1,14 @@
 {% extends 'repo/base.html' %}
 
 {% block content %}
+{% if user.is_authenticated %}
+    <p><a href="{% url 'logout' %}">logout</a></p>
     <form method="POST" class="post-form">{% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="save">Save</button>
+        <button type="submit" class="save">Show</button>
     </form>
+{% else %}
+  <p>You are not logged in</p>
+  <a href="{% url 'login' %}">login</a>
+{% endif %}
 {% endblock %}
