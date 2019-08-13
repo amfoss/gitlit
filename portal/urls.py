@@ -20,5 +20,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('user.urls')),
     path('repo/', include('repo.urls')),
+    path('accounts/', include('accounts.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('oauth/',include('social_django.urls'), name='social'),
 ]

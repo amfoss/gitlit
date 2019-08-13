@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'user',
     'algorithms',
     'repo',
-    'social_django'
+    'social_django',
+    'accounts.apps.AccountsConfig'
 ]
 
 MIDDLEWARE = [
@@ -51,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'portal.urls'
@@ -130,8 +132,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
+LOGIN_URL = 'accounts/login'
+LOGOUT_URL = 'logout'
+
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
-SOCIAL_AUTH_GITHUB_KEY = '<key-here>'
-SOCIAL_AUTH_GITHUB_SECRET = '<key-here>'
+SOCIAL_AUTH_GITHUB_KEY = '<token>'
+SOCIAL_AUTH_GITHUB_SECRET = '<token>'
