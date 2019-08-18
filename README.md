@@ -95,6 +95,11 @@ their projects, and monitor community members.
 2. [Akhil K Gangadharan](https://github.com/akhilam512)
 3. [Ashwin S Shenoy](https://github.com/aswinshenoy)
 
+## :man_technologist: Core Contributors
+
+1. [Puneeth Chanda](https://github.com/puneeth2001)
+
+
 Contributions are welcome! <3
 
 ## :black_nib: License 
