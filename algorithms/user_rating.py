@@ -186,7 +186,7 @@ class UserMetrics:
         response = runquery(self.token, pr_query)
         if response:
             count = 0
-            if (response["data"]["user"]["pullRequests"]["edges"]):
+            if response["data"]["user"]["pullRequests"]["edges"]:
                 for pr in response["data"]["user"]["pullRequests"]["edges"]:
                     created = parser.parse(pr["node"]["createdAt"])
                     timezone = created.tzinfo

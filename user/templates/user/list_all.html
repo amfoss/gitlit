@@ -1,19 +1,77 @@
 {% extends 'user/base.html' %}
 {%block content%}
-    <div>
-        <div>
-            <p>basepoints: {{ usermetrics.basePoints }}</p>
-            <p>creationPoints: {{ usermetrics.creationPoints }}</p>
-            <p>activityPoints{{ usermetrics.activityPoints }}</p>
-            <p>contributionPoints{{ usermetrics.contributionPoints}}</p>
+    <style>
+    .card {
+        color: black;
+        background: white;
+        text-align: center;
+        padding: 10px;
+    }
+    </style>
+    <div class="mt-4">
+        <div class="container">
+            <div class="row m-0">
+                <div class="col-3 p-4">
+                  <h4>{{ usermetrics.fullName }}</h4>
+                    <p>Full Name</p>
+                </div>
+                <div class="col-3 p-4">
+                    <h4>{{usermetrics.userPoints}}</h4>
+                    <p>User Points</p>
+                </div>
+                <div class="col-3 p-4">
+                    <h4>{{ usermetrics.followersCount }}</h4>
+                    <p>Followers Count</p>
+                </div>
+                <div class="col-3 p-4">
+                    <h4>{{ usermetrics.followingCount }}</h4>
+                    <p>Following Count</p>
+                </div>
+            </div>
+            <div class="row m-0">
+                <div class="col-3">
+                    <div class="card">
+                        <h4>{{ usermetrics.basePoints }}</h4>
+                        <p>Base Points</p>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="card">
+                        <h4>{{ usermetrics.creationPoints }}</h4>
+                        <p>Creation Points</p>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="card">
+                        <h4>{{ usermetrics.activityPoints }}</h4>
+                        <p>Activity Points</p>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="card">
+                        <h4>{{ usermetrics.contributionPoints}}</h4>
+                        <p>Contribution Points</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h3 class="m-4">Interests</h3>
+        <div class="m-0 row">
             {% for topic,points in usermetrics.topicInterestDict.items %}
-                <li>{{ topic }}:{{ points }}</li>
+                <span class="col-2 p-4 card">
+                    <h5>{{ topic }}</h5>
+                    <h7>{{ points }}</h7>
+                </span>
             {% endfor %}
-            <p>Skill Points</p>
+        </div>
+        <h3 class="m-4">Skills</h3>
+        <div class="m-0 row">
             {% for topic,skillpoints in usermetrics.topicSkillDict.items %}
-                <li>{{ topic }}:{{ skillpoints }}</li>
+                <span class="col-2 p-4 card">
+                    <h5>{{ topic }}</h5>
+                    <h7>{{ skillpoints }}</h7>
+                </span>
             {% endfor %}
-            <li>user points:{{usermetrics.userPoints}}</li>
         </div>
     </div>
 {%endblock%}

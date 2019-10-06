@@ -1,16 +1,27 @@
 {% extends 'repo/base.html' %}
-
 {% block content %}
+<style>
+    .heading{
+        margin-top: 15vh;
+    }
+    .heading h1{
+        font-size: 15vh;
+    }
+    .heading h6{
+        font-size: 3vh;
+    }
+</style>
 {% if user.is_authenticated %}
-    <p><a href="{% url 'logout' %}">logout</a></p>
-    <form method="POST" class="post-form">{% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="save">Show</button>
-    </form>
+    <div class="heading text-center">
+        <form method="POST" class="post-form">{% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="save">Show</button>
+        </form>
+    </div>
 {% else %}
-  <p>You are not logged in</p>
-  <a href="{% url 'login' %}">login</a>
-    <a href="{% url 'social:begin' 'github' %}">Login with GitHub</a><br>
-    <a href = "{% url 'signup' %}">Signup</a>
+    <div class="heading text-center p-4">
+        <h1>Welcome to GitLit</h1>
+        <h6>GitLit is a social network exclusively for Open-Source developers. It works by connecting enthusiastic developers to the most interesting and relevant projects to them and forming new communities of like-minded and passionate developers.</h6>
+    </div>
 {% endif %}
 {% endblock %}
